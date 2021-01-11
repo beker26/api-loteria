@@ -1,32 +1,29 @@
 package loteria.com.br.apiorangeloteria.model;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.Column;
+import java.util.Random;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "pessoa")
-public class Pessoa {
+@Table(name = "loteria")
+public class Loteria {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@Column(name = "email")
-	@Size(min = 8, max = 35, message = "O email deve conter no mínimo 8 caracteres")
-	@NotBlank
-	private String email;
-
-	@OneToMany(mappedBy = "pessoa")
-	private List<Loteria> loteria = new ArrayList<>();
+	
+	private Random numero;
+	
+	@ManyToOne
+	@JoinColumn(name = "PESSOA_ID", referencedColumnName = "id")
+	private Pessoa pessoa ;
 
 	public Long getId() {
 		return id;
@@ -36,20 +33,20 @@ public class Pessoa {
 		this.id = id;
 	}
 
-	public String getEmail() {
-		return email;
+	public Random getNumero() {
+		return numero;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setNumero(Random numero) {
+		this.numero = numero;
 	}
 
-	public List<Loteria> getLoteria() {
-		return loteria;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
-	public void setLoteria(List<Loteria> loteria) {
-		this.loteria = loteria;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 
 	@Override
@@ -68,7 +65,7 @@ public class Pessoa {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Pessoa other = (Pessoa) obj;
+		Loteria other = (Loteria) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
