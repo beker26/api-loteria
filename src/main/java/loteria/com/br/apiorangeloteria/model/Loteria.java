@@ -3,6 +3,8 @@ package loteria.com.br.apiorangeloteria.model;
 
 
 
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,12 +25,12 @@ public class Loteria {
 	
 	@ManyToOne
 	@JoinColumn(name = "PESSOA_ID", referencedColumnName = "id")
-	private Pessoa pessoa ;
+	private Pessoa pessoa = new Pessoa() ;
 	
    public Loteria() {}
    
-   public Loteria(Long aposta) {
-	this.aposta = aposta;
+   public Loteria(String email) {
+	   this.pessoa.setEmail(email);
    }
 
 	public Long getId() {
@@ -84,6 +86,8 @@ public class Loteria {
 	
 		return this.pessoa.getEmail();
 	}
+
+	
 
 
 	

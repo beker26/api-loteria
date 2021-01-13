@@ -9,8 +9,8 @@ public class LoteriaDto {
 	private String email;
 	
 	public LoteriaDto(Loteria loteria) {
-	this.numero = loteria.getNumero();
-	this.email = loteria.getPessoaEmail();
+		this.numero = loteria.getNumero();
+		this.email = loteria.getPessoaEmail();
 	}
 
 	public Long getNumero() {

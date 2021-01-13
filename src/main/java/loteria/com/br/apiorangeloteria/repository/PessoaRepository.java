@@ -2,6 +2,8 @@ package loteria.com.br.apiorangeloteria.repository;
 
 
 
+
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import loteria.com.br.apiorangeloteria.model.Pessoa;

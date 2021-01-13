@@ -1,26 +1,26 @@
 package loteria.com.br.apiorangeloteria.controller.dto;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 
 import loteria.com.br.apiorangeloteria.model.Loteria;
 
 public class LoteriaForm {
 	
-	@NotNull
-	private Long numero ;
+	@NotBlank
+	private String email;
 	
 	public LoteriaForm() {}
 	
-	public LoteriaForm(Loteria loteria) {
-		this.numero = loteria.getNumero();
+	public LoteriaForm(String email) {
+		this.email = email;
 	}
-
-	public Long getNumero() {
-		return numero;
+	
+	public String getEmail() {
+		return email;
 	}
 	
 	public Loteria toLoteria() {
- 		return new Loteria(this.getNumero());
+ 		return new Loteria(this.email);
 	}
 	
 	
