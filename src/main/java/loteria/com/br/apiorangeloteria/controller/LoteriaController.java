@@ -12,7 +12,6 @@ import loteria.com.br.apiorangeloteria.controller.dto.LoteriaForm;
 import loteria.com.br.apiorangeloteria.model.Loteria;
 import loteria.com.br.apiorangeloteria.service.LoteriasService;
 
-
 @RestController
 @Log4j2
 public class LoteriaController implements LoteriaControllerApi {
@@ -30,14 +29,9 @@ public class LoteriaController implements LoteriaControllerApi {
 		log.info("Form: {}", loteriaForm);
 		Loteria loteria = loteriaService.insert(loteriaForm);
 		log.info("Finishing Method insertAposta in Loteria Controller!");
-		URI uri = uriBuilder.path("/pessoa/{email}").buildAndExpand(loteria.getPessoaEmail(),loteria.getNumero()).toUri();
+		URI uri = uriBuilder.path("/pessoa/{email}").buildAndExpand(loteria.getPessoaEmail(), loteria.getNumero())
+				.toUri();
 		return ResponseEntity.created(uri).body(new LoteriaDto(loteria));
 	}
-
-	
-	
-	
-	
-	
 
 }

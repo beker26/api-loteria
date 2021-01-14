@@ -28,12 +28,4 @@ public class PessoaController implements PessoaControllerApi {
 		return ResponseEntity.ok().body(new PessoaDetailDto(pessoa));
 	}
 
-	
-
-	
-	
-	
-	
-	
-
 }

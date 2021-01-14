@@ -20,7 +20,7 @@ public class Pessoa {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "email")
+	@Column(name = "email", unique = true)
 	@Size(min = 8, max = 35, message = "O email deve conter no mínimo 8 caracteres")
 	@NotBlank
 	private String email;
@@ -76,7 +76,5 @@ public class Pessoa {
 			return false;
 		return true;
 	}
-	
-	
 
 }

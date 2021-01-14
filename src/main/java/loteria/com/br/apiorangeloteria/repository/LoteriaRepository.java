@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import loteria.com.br.apiorangeloteria.model.Loteria;
 
 
-@Repository
+
 public interface LoteriaRepository extends  JpaRepository<Loteria, Long> {
 
 }

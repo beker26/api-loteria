@@ -19,31 +19,28 @@ public class LoteriasSpringDataJPAServiceImpl implements LoteriasService {
 	private LoteriaRepository loteriaRepository;
 	private PessoaRepository pessoaRepository;
 
-	public LoteriasSpringDataJPAServiceImpl(LoteriaRepository loteriaRepository,PessoaRepository pessoaRepository) {
+	public LoteriasSpringDataJPAServiceImpl(LoteriaRepository loteriaRepository, PessoaRepository pessoaRepository) {
 
 		this.loteriaRepository = loteriaRepository;
 		this.pessoaRepository = pessoaRepository;
 	}
 
- 
-	
-	
 	@Override
 	public Loteria insert(LoteriaForm loteriaForm) {
-		
+
 		Loteria loteria = loteriaForm.toLoteria();
-		
+
 		log.info("Starting Method insert in LoteriasSpringDataJPAServiceImpl");
 		Pessoa findByPessoa = pessoaRepository.findByEmail(loteria.getPessoaEmail());
-		
-		if(findByPessoa == null) {
+
+		if (findByPessoa == null) {
 			findByPessoa = pessoaRepository.save(loteria.getPessoa());
 		}
-		
+
 		Random random = new Random();
 		Long numeroSorteado = Long.valueOf(random.nextInt(1000));
 		loteria.setNumero(numeroSorteado);
-		
+
 		loteria.setPessoa(findByPessoa);
 		loteria = loteriaRepository.save(loteria);
 		log.info("Finishing Method insert in LoteriasSpringDataJPAServiceImpl");

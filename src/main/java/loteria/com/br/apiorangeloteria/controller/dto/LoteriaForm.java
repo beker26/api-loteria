@@ -6,7 +6,7 @@ import loteria.com.br.apiorangeloteria.model.Loteria;
 
 public class LoteriaForm {
 	
-	@NotBlank
+	@NotBlank(message="Preenchimento obrigatório")
 	private String email;
 	
 	public LoteriaForm() {}

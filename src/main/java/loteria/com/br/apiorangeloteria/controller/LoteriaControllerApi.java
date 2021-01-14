@@ -1,6 +1,5 @@
 package loteria.com.br.apiorangeloteria.controller;
 
-
 import javax.transaction.Transactional;
 
 import org.springframework.http.ResponseEntity;
@@ -14,18 +13,13 @@ import org.springframework.web.util.UriComponentsBuilder;
 import loteria.com.br.apiorangeloteria.controller.dto.LoteriaDto;
 import loteria.com.br.apiorangeloteria.controller.dto.LoteriaForm;
 
-
-
-
 @RestController
 @RequestMapping(value = "/v1/pessoa/loteria")
 public interface LoteriaControllerApi {
-	
+
 	@PostMapping
 	@Transactional
-	ResponseEntity<LoteriaDto> insertAposta( @RequestBody @Validated LoteriaForm loteriaForm, UriComponentsBuilder uriBuilder);
-	
-	
-	
+	ResponseEntity<LoteriaDto> insertAposta(@RequestBody @Validated LoteriaForm loteriaForm,
+			UriComponentsBuilder uriBuilder);
 
 }
